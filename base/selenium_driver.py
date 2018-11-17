@@ -41,7 +41,9 @@ class SeleniumDriver():
     def getTitle(self):
         return self.driver.title
 
-    # Method to get by type by passing locator and locator type into this method just
+    # Created to be used inside this class for other methods
+    # This method will not be called directly from any other class
+    # Method to get by type by passing locator type into this method just
     # to handle errors that can occur if this code is written in test class
     def getByType(self, locatorType):
         locatorType = locatorType.lower()
@@ -62,6 +64,9 @@ class SeleniumDriver():
                           " not correct/supported")
         return False
 
+
+    # Created to be used inside this class for other methods
+    # This method will not be called directly from any other class
     # method to get the element by passing locator and locator type and reuse method getbytype inside it
     def getElement(self, locator, locatorType="id"):
         element = None
@@ -93,8 +98,10 @@ class SeleniumDriver():
                           " and  locatorType: " + locatorType)
         return element
 
+    # This method will be used inside page classes
     # custom method to click the element and print locator and locatortype in both success and failure .
     # Catch failure in except block
+
     def elementClick(self, locator="", locatorType="id", element=None):
         """
         Click on an element -> MODIFIED
@@ -111,6 +118,8 @@ class SeleniumDriver():
                           " locatorType: " + locatorType)
             print_stack()
 
+
+    # This method will be used inside page classes
     # custom method to send data by using sendkeys method
     def sendKeys(self, data, locator="", locatorType="id", element=None):
         """
@@ -128,6 +137,7 @@ class SeleniumDriver():
                   " locatorType: " + locatorType)
             print_stack()
 
+    # This method will be used inside page classes
     def getText(self, locator="", locatorType="id", element=None, info=""):
         """
         NEW METHOD
@@ -153,6 +163,7 @@ class SeleniumDriver():
             text = None
         return text
 
+    # This method will be used inside page classes
     # method to make sure that web element is actually present on the page before
     # we start working on them in our tests because we dnt want our scripts to
     # fail because of these weird errors
